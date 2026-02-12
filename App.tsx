@@ -109,12 +109,12 @@ export default function App() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 0.3 }}
-                    className="text-center relative"
+                    className="text-center relative p-4"
                  >
-                    <h2 className="font-hand text-6xl md:text-8xl mb-4 text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5E1] via-[#D4AF37] to-[#8a6e3d] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+                    <h2 className="font-hand text-6xl md:text-8xl mb-4 text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5E1] via-[#D4AF37] to-[#8a6e3d] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] pb-2 pr-2 pl-2 leading-relaxed">
                         {CONTENT.recipientName}
                     </h2>
-                    <p className="font-serif text-lg md:text-2xl text-gold/80 tracking-[0.2em] uppercase mt-4">
+                    <p className="font-serif text-lg md:text-2xl text-gold/80 tracking-[0.2em] uppercase mt-2">
                         A Valentine's Surprise
                     </p>
                  </motion.div>
