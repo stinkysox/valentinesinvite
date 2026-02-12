@@ -92,40 +92,73 @@ export default function App() {
                 <div className="absolute left-2 top-0 bottom-0 w-px bg-gold/20 ml-2"></div>
             </motion.div>
 
-            {/* Intro Content */}
+            {/* Intro Content - Premium Envelope Style */}
             <motion.div 
-              exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.5 } }}
-              className="relative z-40 text-center flex flex-col items-center p-8 bg-white/40 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl mx-4"
+              exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.8, ease: "easeInOut" } }}
+              className="relative z-40 flex flex-col items-center justify-center min-h-[60vh]"
             >
-                 <motion.h2 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1 }}
-                    className="font-serif text-3xl md:text-5xl text-burgundy mb-12 drop-shadow-sm leading-tight"
-                 >
-                    Hey {CONTENT.recipientName},<br/>
-                    <span className="text-xl md:text-2xl opacity-60 italic tracking-wide">this is for you...</span>
-                 </motion.h2>
+                 {/* Decorative Top Ribbon/Flourish */}
+                 <motion.div
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 1 }}
+                    className="w-64 md:w-96 h-[2px] bg-gradient-to-r from-transparent via-gold/60 to-transparent mb-8"
+                 ></motion.div>
 
-                 {/* Interactive Wax Seal */}
+                 <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                    className="text-center relative"
+                 >
+                    <h2 className="font-hand text-6xl md:text-8xl mb-4 text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5E1] via-[#D4AF37] to-[#8a6e3d] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+                        {CONTENT.recipientName}
+                    </h2>
+                    <p className="font-serif text-lg md:text-2xl text-gold/80 tracking-[0.2em] uppercase mt-4">
+                        A Valentine's Surprise
+                    </p>
+                 </motion.div>
+
+                 {/* Decorative Bottom Ribbon/Flourish */}
+                 <motion.div
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 1 }}
+                    className="w-40 md:w-60 h-[1px] bg-gradient-to-r from-transparent via-gold/40 to-transparent mt-8 mb-16"
+                 ></motion.div>
+
+                 {/* Interactive Wax Seal Closure */}
                  <motion.div 
                     onClick={() => setStarted(true)}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1, duration: 0.5, type: "spring" }}
                     className="relative cursor-pointer group"
                  >
                     {/* The Wax Seal */}
-                    <div className="w-24 h-24 bg-red-800 rounded-full shadow-[0_15px_40px_rgba(153,27,27,0.4)] flex items-center justify-center border-4 border-red-900/50 relative overflow-hidden active:shadow-inner transition-shadow">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-red-800/20 to-transparent"></div>
-                        <Heart className="text-red-950 fill-red-950/20 z-10" size={40} />
-                        <div className="absolute inset-0 rounded-full border-[10px] border-red-900/10 blur-[1px]"></div>
+                    <div className="w-28 h-28 bg-[#7A1F31] rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.4)] flex items-center justify-center border-[6px] border-[#5a111a] relative overflow-hidden ring-4 ring-[#5a111a]/30">
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/30"></div>
+                        
+                        {/* Seal Texture */}
+                        <div className="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/pinstriped-suit.png')]"></div>
+
+                        <Heart className="text-[#3a0b12] fill-[#3a0b12]/40 z-10 drop-shadow-sm" size={48} />
+                        
+                        {/* Highlight Ring */}
+                        <div className="absolute inset-[6px] rounded-full border border-white/10"></div>
                         
                         {/* Shine */}
-                        <div className="absolute top-[10%] left-[10%] w-[40%] h-[40%] bg-white/10 rounded-full blur-[4px]"></div>
+                        <div className="absolute top-[15%] left-[15%] w-[30%] h-[30%] bg-white/20 rounded-full blur-[6px]"></div>
                     </div>
                     
-                    {/* Ping/Invite effect */}
-                    <div className="absolute inset-0 bg-red-800 rounded-full animate-ping opacity-20 pointer-events-none"></div>
+                    <div className="absolute -bottom-10 w-full text-center">
+                        <span className="text-[10px] uppercase tracking-[0.3em] text-gold/60 font-serif">Tap to Open</span>
+                    </div>
+
+                    {/* Pulse Effect */}
+                    <div className="absolute inset-0 bg-[#7A1F31] rounded-full animate-ping opacity-10 pointer-events-none duration-1000"></div>
                  </motion.div>
             </motion.div>
           </motion.div>
