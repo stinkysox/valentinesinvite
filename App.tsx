@@ -272,7 +272,6 @@ export default function App() {
           <SectionDivider isNight={isNight} />
           
           <section className="py-4 px-6 flex flex-col items-center relative">
-              <FairyLights />
               <div className="text-center z-10">
                   <p className={`font-serif italic mb-8 ${isNight ? 'text-gold/60' : 'text-burgundy/60'}`}>Make a wish...</p>
                   <RealisticCandle />
