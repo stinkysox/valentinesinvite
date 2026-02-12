@@ -82,7 +82,9 @@ export const ReasonsGrid: React.FC<{ isNight: boolean }> = ({ isNight }) => {
 
   return (
     <div ref={containerRef} className="w-full max-w-6xl mx-auto px-4 py-20 relative min-h-[900px]">
-      {isInView && <Balloons isNight={isNight} />}
+      <div className="absolute inset-0 z-[-1]">
+        {isInView && <Balloons isNight={isNight} />}
+      </div>
       
       <div className="text-center mb-16 relative z-10">
         <motion.h3 

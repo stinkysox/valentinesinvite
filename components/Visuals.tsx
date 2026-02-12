@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Moon, Sun } from 'lucide-react';
 
@@ -92,3 +92,54 @@ export const SectionDivider: React.FC<{ isNight: boolean }> = ({ isNight }) => (
     <div className={`h-px w-24 ${isNight ? 'bg-gold' : 'bg-burgundy'}`}></div>
   </div>
 );
+
+export const FallingPetals: React.FC = () => {
+  const petals = useMemo(() => {
+    return Array.from({ length: 15 }).map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * 20,
+      duration: 15 + Math.random() * 10,
+      size: 15 + Math.random() * 15,
+      rotation: Math.random() * 360,
+      sway: 20 + Math.random() * 30,
+    }));
+  }, []);
+
+  return (
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-20">
+      {petals.map((p) => (
+        <motion.div
+          key={p.id}
+          initial={{ y: -50, x: `${p.left}vw`, rotate: p.rotation, opacity: 0 }}
+          animate={{ 
+            y: "110vh", 
+            x: [`${p.left}vw`, `${p.left + p.sway / 10}vw`, `${p.left - p.sway / 10}vw`, `${p.left}vw`],
+            rotate: [p.rotation, p.rotation + 360],
+            opacity: [0, 0.6, 0.6, 0]
+          }}
+          transition={{ 
+            duration: p.duration, 
+            repeat: Infinity, 
+            delay: p.delay,
+            ease: "linear"
+          }}
+          className="absolute"
+        >
+          <svg width={p.size} height={p.size} viewBox="0 0 100 100" fill="none">
+            <path 
+              d="M50 0C60 20 100 30 100 60C100 85 75 100 50 100C25 100 0 85 0 60C0 30 40 20 50 0Z" 
+              fill="#72383D" 
+              fillOpacity="0.4"
+            />
+            <path 
+              d="M50 10C55 25 85 35 85 60C85 75 70 85 50 85C30 85 15 75 15 60C15 35 45 25 50 10Z" 
+              fill="#A64D59" 
+              fillOpacity="0.3"
+            />
+          </svg>
+        </motion.div>
+      ))}
+    </div>
+  );
+};

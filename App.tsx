@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown, Heart } from 'lucide-react';
 
 import { CONTENT } from './data/content';
-import { FairyLights, DayNightToggle, RealisticConfetti, SectionDivider } from './components/Visuals';
+import { FairyLights, DayNightToggle, RealisticConfetti, SectionDivider, FallingPetals } from './components/Visuals';
 import { Walkman } from './components/Walkman';
 import { Polaroid } from './components/Polaroid';
 import { TimelineItem } from './components/Timeline';
@@ -55,6 +55,7 @@ export default function App() {
     <div className={`min-h-screen font-sans overflow-x-hidden relative transition-colors duration-1000 ${isNight ? 'bg-night text-night-text' : 'bg-cream text-charcoal'}`}>
       
       {started && <DayNightToggle isNight={isNight} toggle={() => setIsNight(!isNight)} />}
+      {started && <FallingPetals />}
       
       <AnimatePresence>
          {showConfetti && <RealisticConfetti key="confetti" />}
@@ -75,7 +76,6 @@ export default function App() {
               transition={{ duration: 2.5, ease: [0.45, 0, 0.55, 1], delay: 0.2 }}
               className="absolute left-0 top-0 w-1/2 h-full bg-burgundy z-30 shadow-[5px_0_30px_rgba(0,0,0,0.5)] flex"
             >
-                <div className="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/silk-weave.png')] opacity-10"></div>
                 <div className="absolute right-0 w-1 h-full bg-black/20"></div>
                 {/* Decorative Tassels/Edge */}
                 <div className="absolute right-2 top-0 bottom-0 w-px bg-gold/20 mr-2"></div>
@@ -88,7 +88,6 @@ export default function App() {
               transition={{ duration: 2.5, ease: [0.45, 0, 0.55, 1], delay: 0.2 }}
               className="absolute right-0 top-0 w-1/2 h-full bg-burgundy z-30 shadow-[-5px_0_30px_rgba(0,0,0,0.5)] flex"
             >
-                <div className="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/silk-weave.png')] opacity-10"></div>
                 <div className="absolute left-0 w-1 h-full bg-black/20"></div>
                 <div className="absolute left-2 top-0 bottom-0 w-px bg-gold/20 ml-2"></div>
             </motion.div>
